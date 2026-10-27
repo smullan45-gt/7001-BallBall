@@ -30,19 +30,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetCurrentPlacement();
         CheckRotateLock();
     }
 
-    void GetCurrentPlacement()
+    void CheckRotateLock() //Check if the player's rotation is locked (this will mean they haven't been hit so far)
     {
-        currentPosition = transform.position;
-        currentRotation = transform.rotation;
-    }
-
-    void CheckRotateLock()
-    {
-        if(rotateLock)
+        if(rotateLock) //if they haven't been hit, lock XZ rotation and allow player input
         {
             LockRotation();
             CheckMoveInput();
@@ -59,13 +52,13 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = moveAction.ReadValue<Vector2>();
         Vector3 finalMove = new Vector3(moveInput.x, 0.0f, moveInput.y).normalized; //Normalised prevents unnatural acceleration on the diagonal
-        transform.Translate(finalMove * speed * Time.deltaTime, Space.World);
+        transform.Translate(finalMove * speed * Time.deltaTime, Space.World); //Space world uses universal axis for movement, so character rotation doesn't interfere with input
 
-        Quaternion targetRotation = Quaternion.LookRotation(finalMove, Vector3.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        Quaternion targetRotation = Quaternion.LookRotation(finalMove, Vector3.up); //Sets the direction to look, based on player input, rotating around Y axis
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); //Smooth rotation based on speed over time
     }
 
-    public void SetRotateLock(bool isLocked)
+    public void SetRotateLock(bool isLocked) //To be called by collision scripts later
     {
         rotateLock = isLocked;
     }
