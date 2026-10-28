@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Transform cam;
+    private CharacterController charCon;
 
     public float speed;
     public float turnSpeed;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         moveAction.Enable();
         rigidBody = GetComponent<Rigidbody>();
+        charCon = GetComponent<CharacterController>();
         cam = Camera.main.transform; //Cam now equals camera's position and rotation
     }
 
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         if(rotateLock) //if they haven't been hit, lock XZ rotation and allow player input
         {
-            LockRotation();
+            //LockRotation();
             CheckMoveInput();
         }
     }
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMovement = cam.right * moveInput.x;
 
         Vector3 finalMove = Vector3.ClampMagnitude(forwardMovement + horizontalMovement, 1); //Clamp, or limit, the vector into a 1 -1 range
-        transform.Translate(finalMove * speed * Time.deltaTime, Space.World); //movement relative to camera, so must use world axis (camera is in world)
+        charCon.Move(finalMove * speed * Time.deltaTime); //movement relative to camera, so must use world axis (camera is in world)
 
         Quaternion targetRotation = Quaternion.LookRotation(finalMove, Vector3.up); //Sets the direction to look, based on player input, rotating around Y axis
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); //Smooth rotation based on speed over time
