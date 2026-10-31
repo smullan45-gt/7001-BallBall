@@ -41,8 +41,12 @@ public class PlayerController : MonoBehaviour
         Vector3 camDirection = CalculateCameraDirection();
         Vector3 finalMove = CalculatePlayerDirection(camDirection);
 
-        RotatePlayer(finalMove);
+        if (finalMove != Vector3.zero) 
+        {
+            RotatePlayer(finalMove);
         MoveWithGravity(finalMove);
+        }
+        
     }
 
     Vector3 CalculateCameraDirection()
