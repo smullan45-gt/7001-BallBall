@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float turnSpeed;
+    public float gravity = -9.8f;
     private float rotationY;
 
     public InputAction moveAction;
@@ -56,10 +57,20 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMovement = cam.right * moveInput.x;
 
         Vector3 finalMove = Vector3.ClampMagnitude(forwardMovement + horizontalMovement, 1); //Clamp, or limit, the vector into a 1 -1 range
-        charCon.Move(finalMove * speed * Time.deltaTime); //movement relative to camera, so must use world axis (camera is in world)
+        RotatePlayer(finalMove);
+        MoveWithGravity(finalMove);
+    }
 
-        Quaternion targetRotation = Quaternion.LookRotation(finalMove, Vector3.up); //Sets the direction to look, based on player input, rotating around Y axis
+    void RotatePlayer(Vector3 direction)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up); //Sets the direction to look, based on player input, rotating around Y axis
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); //Smooth rotation based on speed over time
+    }
+
+    void MoveWithGravity(Vector3 direction)
+    {
+        direction.y += gravity * Time.deltaTime;
+        charCon.Move(direction * speed * Time.deltaTime);
     }
 
     void CheckBatInput()
