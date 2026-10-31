@@ -11,20 +11,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float turnSpeed;
     public float gravity = -9.8f;
-    private float rotationY;
 
     public InputAction moveAction;
     public InputAction batAction;
 
-    public bool rotateLock = true;
-
-    private Rigidbody rigidBody;
-
     private Vector2 moveInput;
-
-    private Vector3 currentPosition;
-
-    private Quaternion currentRotation;
 
     public GameObject bat;
 
@@ -34,7 +25,6 @@ public class PlayerController : MonoBehaviour
     {
         moveAction.Enable();
         batAction.Enable();
-        rigidBody = GetComponent<Rigidbody>();
         charCon = GetComponent<CharacterController>();
         cam = Camera.main.transform; //Cam now equals camera's position and rotation
     }
@@ -48,17 +38,26 @@ public class PlayerController : MonoBehaviour
 
     void CheckMoveInput()
     {
-        Vector3 camPosition = new Vector3(cam.position.x, transform.position.y, cam.position.z); //Setting camera positon with player Y to prevent issues with downward rotated camera
-        Vector3 direction = (transform.position - camPosition).normalized; //Find direction camera is pointing at to decide what forward will be on input
-        //Target direction = Target Position - Origin Position
+        Vector3 camDirection = CalculateCameraDirection();
+        Vector3 finalMove = CalculatePlayerDirection(camDirection);
 
-        moveInput = moveAction.ReadValue<Vector2>();
-        Vector3 forwardMovement = direction * moveInput.y;
-        Vector3 horizontalMovement = cam.right * moveInput.x;
-
-        Vector3 finalMove = Vector3.ClampMagnitude(forwardMovement + horizontalMovement, 1); //Clamp, or limit, the vector into a 1 -1 range
         RotatePlayer(finalMove);
         MoveWithGravity(finalMove);
+    }
+
+    Vector3 CalculateCameraDirection()
+    {
+        Vector3 camPosition = new Vector3(cam.position.x, transform.position.y, cam.position.z); //Setting camera positon with player Y to prevent issues with downward rotated camera
+        return (transform.position - camPosition).normalized; //Find direction camera is pointing at to decide what forward will be on input
+        //Target direction = Target Position - Origin Position
+    }
+
+    Vector3 CalculatePlayerDirection(Vector3 camDirection)
+    {
+        moveInput = moveAction.ReadValue<Vector2>();
+        Vector3 forwardMovement = camDirection * moveInput.y;
+        Vector3 horizontalMovement = cam.right * moveInput.x;
+        return Vector3.ClampMagnitude(forwardMovement + horizontalMovement, 1); //Clamp, or limit, the vector into a 1 -1 range
     }
 
     void RotatePlayer(Vector3 direction)

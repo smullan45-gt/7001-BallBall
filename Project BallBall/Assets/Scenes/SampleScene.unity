@@ -1141,7 +1141,7 @@ PrefabInstance:
       objectReference: {fileID: 1363166119}
     - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: gravity
-      value: -20
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: batAction.m_SingletonActionBindings.Array.size
