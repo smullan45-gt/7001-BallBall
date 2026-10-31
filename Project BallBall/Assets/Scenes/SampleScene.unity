@@ -1009,7 +1009,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 2
 --- !u!65 &1740152536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2764877454045896210, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: m_TagString
-      value: Bat
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3004001426329540630, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: m_Name
@@ -1141,7 +1141,7 @@ PrefabInstance:
       objectReference: {fileID: 1363166119}
     - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: gravity
-      value: -150
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: batAction.m_SingletonActionBindings.Array.size

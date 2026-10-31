@@ -83,8 +83,10 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator BatSwing()
     {
+        bat.tag = "Bat";
         bat.GetComponent<Animator>().Play("BatSwing");
         yield return new WaitForSeconds(1.0f);
         bat.GetComponent<Animator>().Play("New State");
+        bat.tag = "Untagged";
     }
 }
