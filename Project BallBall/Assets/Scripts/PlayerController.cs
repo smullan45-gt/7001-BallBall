@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         moveAction.Enable();
+        batAction.Enable();
         rigidBody = GetComponent<Rigidbody>();
         charCon = GetComponent<CharacterController>();
         cam = Camera.main.transform; //Cam now equals camera's position and rotation
@@ -36,22 +37,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckRotateLock();
-    }
-
-    void CheckRotateLock() //Check if the player's rotation is locked (this will mean they haven't been hit so far)
-    {
-        if(rotateLock) //if they haven't been hit, lock XZ rotation and allow player input
-        {
-            //LockRotation();
-            CheckMoveInput();
-        }
-    }
-
-    void LockRotation()
-    {
-        rotationY = rigidBody.rotation.y;
-        rigidBody.rotation = Quaternion.Euler(0, rotationY, 0);
+        CheckMoveInput();
     }
 
     void CheckMoveInput()
@@ -69,10 +55,5 @@ public class PlayerController : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(finalMove, Vector3.up); //Sets the direction to look, based on player input, rotating around Y axis
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); //Smooth rotation based on speed over time
-    }
-
-    public void SetRotateLock(bool isLocked) //To be called by collision scripts later
-    {
-        rotateLock = isLocked;
     }
 }
