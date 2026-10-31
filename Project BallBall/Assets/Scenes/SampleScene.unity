@@ -695,6 +695,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1363166119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2764877454045896210, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+  m_PrefabInstance: {fileID: 4264545728245280083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1363166124
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363166119}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3a40d0ab35507e49b802e6b2e3ab604, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1497565398
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,9 +974,45 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2764877454045896210, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: m_TagString
+      value: Bat
+      objectReference: {fileID: 0}
     - target: {fileID: 3004001426329540630, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: bat
+      value: 
+      objectReference: {fileID: 1363166119}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 0b367fac-f4b6-41b7-91b8-f8a8ffdc45f0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/space
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722206662424590157, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324083800070432165, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.768
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324083800070432165, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.402
       objectReference: {fileID: 0}
     - target: {fileID: 8029437414448685250, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -994,7 +1057,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2764877454045896210, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1363166124}
   m_SourcePrefab: {fileID: 100100000, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

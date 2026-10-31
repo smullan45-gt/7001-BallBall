@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private Quaternion currentRotation;
 
+    public GameObject bat;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckMoveInput();
+        CheckBatInput();
     }
 
     void CheckMoveInput()
@@ -55,5 +60,21 @@ public class PlayerController : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(finalMove, Vector3.up); //Sets the direction to look, based on player input, rotating around Y axis
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); //Smooth rotation based on speed over time
+    }
+
+    void CheckBatInput()
+    {
+        if(batAction.triggered)
+        {
+            Debug.Log("Bat been swung!");
+            StartCoroutine(BatSwing());
+        }
+    }
+
+    IEnumerator BatSwing()
+    {
+        bat.GetComponent<Animator>().Play("BatSwing");
+        yield return new WaitForSeconds(1.0f);
+        bat.GetComponent<Animator>().Play("New State");
     }
 }
