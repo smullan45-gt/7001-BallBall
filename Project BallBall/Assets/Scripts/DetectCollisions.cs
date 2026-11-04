@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
-
     private Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +21,9 @@ public class DetectCollisions : MonoBehaviour
         if(other.gameObject.tag == "Bat")
         {
             Debug.Log("THWACK!");
+            gameObject.GetComponent<EnemyBehaviour>().HitEnemy();
             rb.AddForce(transform.up * 10.0f, ForceMode.Impulse);
+            
         }
     }
 }
