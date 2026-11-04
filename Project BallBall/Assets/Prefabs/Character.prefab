@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6991028190878419429}
   - component: {fileID: 3909195743065110193}
   - component: {fileID: 5722206662424590157}
-  - component: {fileID: 2105583251958833032}
-  - component: {fileID: 2786819492377084901}
-  m_Layer: 0
+  - component: {fileID: 4293410014193472000}
+  - component: {fileID: 1426941072682436097}
+  m_Layer: 6
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!95 &2105583251958833032
+--- !u!95 &4293410014193472000
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &2786819492377084901
+--- !u!54 &1426941072682436097
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,9 +176,9 @@ GameObject:
   - component: {fileID: 8029437414448685250}
   - component: {fileID: 5310259350117222070}
   - component: {fileID: 1032666458915427341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 2971646989548972473}
   - component: {fileID: 4249857864300478375}
   - component: {fileID: 4121133438600131257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 1071273537639202696}
   - component: {fileID: 8257271631947380777}
   - component: {fileID: 392552053833327066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
