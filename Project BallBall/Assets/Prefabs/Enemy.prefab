@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451f3e004b2890e49b9e3a6d5e4719b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
+  batForce: 50
 --- !u!114 &3424432028494228057
 MonoBehaviour:
   m_ObjectHideFlags: 0

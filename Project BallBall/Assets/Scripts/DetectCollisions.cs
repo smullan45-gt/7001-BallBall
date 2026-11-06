@@ -4,6 +4,8 @@ public class DetectCollisions : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public float batForce = 100.0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +24,7 @@ public class DetectCollisions : MonoBehaviour
         {
             Debug.Log("THWACK!");
             gameObject.GetComponent<EnemyBehaviour>().HitEnemy();
-            rb.AddForce(transform.up * 10.0f, ForceMode.Impulse);
+            rb.AddForce(transform.up * batForce, ForceMode.Impulse);
             
         }
     }

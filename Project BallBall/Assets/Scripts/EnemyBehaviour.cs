@@ -37,6 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Debug.Log("Setting isHit to True");
         isHit = true;
+        agent.enabled = false;
         StartCoroutine(StunEnemy());
     }
 
@@ -46,5 +47,6 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(stunTime);
         Debug.Log("Setting isHit to false");
         isHit = false;
+        agent.enabled = true;
     }
 }
