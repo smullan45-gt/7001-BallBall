@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6706899278236041009}
   - component: {fileID: 3491436864872264342}
   - component: {fileID: 5058618155688591657}
-  - component: {fileID: 2366459961291973317}
   - component: {fileID: 3424432028494228057}
   - component: {fileID: 5567965828943157260}
   m_Layer: 7
@@ -143,19 +142,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &2366459961291973317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8339209504008068739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451f3e004b2890e49b9e3a6d5e4719b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
-  batForce: 50
 --- !u!114 &3424432028494228057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +168,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

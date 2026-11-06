@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed;
     public float gravity = -9.8f;
 
+    private Vector3 finalDirection;
+
     public InputAction moveAction;
     public InputAction batAction;
 
@@ -39,12 +41,12 @@ public class PlayerController : MonoBehaviour
     void CheckMoveInput()
     {
         Vector3 camDirection = CalculateCameraDirection();
-        Vector3 finalMove = CalculatePlayerDirection(camDirection);
+        finalDirection = CalculatePlayerDirection(camDirection);
 
-        if (finalMove != Vector3.zero) 
+        if (finalDirection != Vector3.zero) 
         {
-            RotatePlayer(finalMove);
-        MoveWithGravity(finalMove);
+            RotatePlayer(finalDirection);
+        MoveWithGravity(finalDirection);
         }
         
     }
@@ -89,8 +91,13 @@ public class PlayerController : MonoBehaviour
     {
         bat.tag = "Bat";
         bat.GetComponent<Animator>().Play("BatSwing");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         bat.GetComponent<Animator>().Play("New State");
         bat.tag = "Untagged";
+    }
+
+    public Vector3 GetPlayerDirection()
+    {
+        return finalDirection;
     }
 }
