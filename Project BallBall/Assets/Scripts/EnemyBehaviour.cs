@@ -8,11 +8,18 @@ public class EnemyBehaviour : MonoBehaviour
 
     public GameObject player;
 
-    public bool isHit = false;
+    private bool isHit = false;
+    private bool isGrounded = true;
 
     public float stunTime = 3.0f;
 
+    private BoxCollider collider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,6 +46,11 @@ public class EnemyBehaviour : MonoBehaviour
         isHit = true;
         agent.enabled = false;
         StartCoroutine(StunEnemy());
+    }
+
+    private bool CheckGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 0.1f);
     }
 
     IEnumerator StunEnemy()
