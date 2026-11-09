@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 8029437414448685250}
   - component: {fileID: 5310259350117222070}
   - component: {fileID: 1032666458915427341}
+  - component: {fileID: 6723486546635316082}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -227,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84aa2a4c3e1f5154abbe9dfa8a4f0a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 5
-  turnSpeed: 5
+  speed: 7
+  turnSpeed: 10
   gravity: -120
   moveAction:
     m_Name: Move
@@ -322,6 +323,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6723486546635316082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3004001426329540630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0f4099ebb0baa42887a34720c3d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
+  launchForce: 50
+  playerMass: 3
+  impact: {x: 0, y: 0, z: 0}
 --- !u!1 &4828871432762420379
 GameObject:
   m_ObjectHideFlags: 0
