@@ -9,7 +9,6 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject player;
 
     private bool isHit = false;
-    private bool isGrounded = true;
 
     public float stunTime = 3.0f;
 
@@ -48,11 +47,6 @@ public class EnemyBehaviour : MonoBehaviour
         StartCoroutine(StunEnemy());
     }
 
-    private bool CheckGrounded()
-    {
-        return Physics.Raycast(transform.position, Vector3.down, 0.1f);
-    }
-
     IEnumerator StunEnemy()
     {
         Debug.Log("Stunning Enemy...");
@@ -60,5 +54,13 @@ public class EnemyBehaviour : MonoBehaviour
         Debug.Log("Setting isHit to false");
         isHit = false;
         agent.enabled = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Bounds")
+        {
+            Destroy(gameObject);
+        }
     }
 }
