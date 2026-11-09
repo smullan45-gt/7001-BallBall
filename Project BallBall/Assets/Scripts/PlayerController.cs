@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
         if (finalDirection != Vector3.zero) 
         {
             RotatePlayer(finalDirection);
-        MoveWithGravity(finalDirection);
         }
+        MoveWithGravity(finalDirection);
         
     }
 
