@@ -1381,7 +1381,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2929674109382966250, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: batForce
-      value: 25
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929674109382966250, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: launchAngleY
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3004001426329540630, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: m_Name
