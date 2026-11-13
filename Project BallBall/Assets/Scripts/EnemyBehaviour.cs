@@ -63,10 +63,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void HitEnemy()
     {
-        Debug.Log("Setting isHit to True");
-        isHit = true;
-        TogglePhysics(true);
-        StartCoroutine(StunEnemy());
+        if(isHit == false)
+        {
+            Debug.Log("Setting isHit to True");
+            isHit = true;
+            TogglePhysics(true);
+            StartCoroutine(StunEnemy());
+        }
     }
 
     IEnumerator StunEnemy()
