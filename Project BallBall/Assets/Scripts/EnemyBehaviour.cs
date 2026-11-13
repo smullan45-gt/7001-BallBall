@@ -14,16 +14,35 @@ public class EnemyBehaviour : MonoBehaviour
 
     private BoxCollider collider;
 
+    private Rigidbody rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
+        TogglePhysics(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckEnemyHit();
+    }
+
+    void TogglePhysics(bool isPhysics)
+    {
+        if(isPhysics == true)
+        {
+            Debug.Log("Disabling NavMesh, Enabling Rigidbody");
+            agent.enabled = false;
+            rb = gameObject.AddComponent<Rigidbody>() as Rigidbody;
+        }
+        else
+        {
+            Debug.Log("Disabling Rigidbody, Enabling NavMesh...");
+            Destroy(rb);
+            agent.enabled = true;
+        }
     }
 
     void CheckEnemyHit()
@@ -36,14 +55,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     void MoveEnemyToPlayer()
     {
-        agent.SetDestination(player.transform.position);
+        if(agent.enabled)
+        {
+            agent.SetDestination(player.transform.position);
+        }
     }
 
     public void HitEnemy()
     {
         Debug.Log("Setting isHit to True");
         isHit = true;
-        agent.enabled = false;
+        TogglePhysics(true);
         StartCoroutine(StunEnemy());
     }
 
@@ -53,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(stunTime);
         Debug.Log("Setting isHit to false");
         isHit = false;
-        agent.enabled = true;
+        TogglePhysics(false);
     }
 
     private void OnTriggerExit(Collider other)
