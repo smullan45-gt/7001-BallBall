@@ -6,7 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public GameObject player;
+    private GameObject player;
 
     private bool isHit = false;
 
@@ -21,6 +21,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         TogglePhysics(false);
+
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
