@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         bat.tag = "Bat";
         bat.GetComponent<Animator>().Play("BatSwing");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         bat.GetComponent<Animator>().Play("New State");
         bat.tag = "Untagged";
     }
