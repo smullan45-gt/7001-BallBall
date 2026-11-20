@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnerList = GameObject.FindGameObjectsWithTag("Spawner");
 
+        StartInvoke();
+    }
+
+    void StartInvoke()
+    {
         InvokeRepeating(nameof(SpawnEnemies), 2.0f, 5.0f);
     }
 
@@ -20,5 +26,17 @@ public class EnemySpawner : MonoBehaviour
         GameObject randomSpawner = spawnerList[randomIndex];
 
         Instantiate(enemyPrefab, randomSpawner.transform.position, randomSpawner.transform.rotation);
+    }
+
+    public void FreezeSpawners(float freezeTime) 
+    {
+        CancelInvoke();
+        StartCoroutine(PauseSpawners(freezeTime));
+    }
+
+    IEnumerator PauseSpawners(float pauseTime)
+    {
+        yield return new WaitForSeconds(pauseTime);
+        StartInvoke();
     }
 }

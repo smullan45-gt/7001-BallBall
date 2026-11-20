@@ -4,6 +4,7 @@ public class DetectCollisions : MonoBehaviour
 {
     public float batForce = 100.0f;
     public float launchAngleY = 3.0f;
+    public float stunTime = 3.0f;
 
     private GameObject character;
 
@@ -24,7 +25,7 @@ public class DetectCollisions : MonoBehaviour
         if(other.gameObject.tag == "Enemy" && gameObject.tag == "Bat")
         {
             Debug.Log("THWACK!");
-            other.gameObject.GetComponent<EnemyBehaviour>().HitEnemy();
+            other.gameObject.GetComponent<EnemyBehaviour>().HitEnemy(stunTime);
             Vector3 playerDirection = character.transform.forward;
             playerDirection.y = launchAngleY;
             other.gameObject.GetComponent<Rigidbody>().AddForce(playerDirection * batForce, ForceMode.Impulse);  

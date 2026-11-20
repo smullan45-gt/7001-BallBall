@@ -10,8 +10,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private bool isHit = false;
 
-    public float stunTime = 3.0f;
-
     private BoxCollider collider;
 
     private Rigidbody rb;
@@ -35,13 +33,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(isPhysics == true)
         {
-            Debug.Log("Disabling NavMesh, Enabling Rigidbody");
             agent.enabled = false;
-            rb = gameObject.AddComponent<Rigidbody>() as Rigidbody;
+            rb = gameObject.AddComponent<Rigidbody>();
         }
         else
         {
-            Debug.Log("Disabling Rigidbody, Enabling NavMesh...");
             Destroy(rb);
             agent.enabled = true;
         }
@@ -63,22 +59,20 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void HitEnemy()
+    public void HitEnemy(float stun)
     {
         if(isHit == false)
         {
-            Debug.Log("Setting isHit to True");
             isHit = true;
             TogglePhysics(true);
-            StartCoroutine(StunEnemy());
+            StartCoroutine(StunEnemy(stun));
         }
     }
 
-    IEnumerator StunEnemy()
+    IEnumerator StunEnemy(float stun)
     {
         Debug.Log("Stunning Enemy...");
-        yield return new WaitForSeconds(stunTime);
-        Debug.Log("Setting isHit to false");
+        yield return new WaitForSeconds(stun);
         isHit = false;
         TogglePhysics(false);
     }
