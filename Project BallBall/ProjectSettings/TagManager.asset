@@ -11,6 +11,8 @@ TagManager:
   - Goal
   - Spawner
   - Ice
+  - Grow
+  - Posts
   layers:
   - Default
   - TransparentFX
