@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public InputAction moveAction;
     public InputAction batAction;
 
+    private bool batSwinging = false;
+
     private Vector2 moveInput;
 
     public GameObject bat;
@@ -80,9 +82,10 @@ public class PlayerController : MonoBehaviour
 
     void CheckBatInput()
     {
-        if(batAction.triggered)
+        if(batAction.triggered && batSwinging == false)
         {
             Debug.Log("Bat been swung!");
+            batSwinging = true;
             StartCoroutine(BatSwing());
         }
     }
@@ -91,9 +94,10 @@ public class PlayerController : MonoBehaviour
     {
         bat.tag = "Bat";
         bat.GetComponent<Animator>().Play("BatSwing");
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.66f);
         bat.GetComponent<Animator>().Play("New State");
         bat.tag = "Untagged";
+        batSwinging = false;
     }
 
     public Vector3 GetPlayerDirection()

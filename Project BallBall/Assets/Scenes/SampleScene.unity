@@ -1801,6 +1801,22 @@ PrefabInstance:
       propertyPath: speed
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 28a2e7ce-afcc-4362-a37c-40337b6fc5cc
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Mouse>/leftButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310259350117222070, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
+      propertyPath: batAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Bat
+      objectReference: {fileID: 0}
     - target: {fileID: 6324083800070432165, guid: 1ff04c47d48ca704ea1ea3eb95533f4d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
