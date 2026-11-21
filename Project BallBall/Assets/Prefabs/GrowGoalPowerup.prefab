@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3517721525892630356}
+  - component: {fileID: 8918791985539067242}
+  - component: {fileID: -7128757422445924971}
   m_Layer: 0
   m_Name: GrowGoalPowerup
-  m_TagString: Untagged
+  m_TagString: Grow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,42 @@ Transform:
   - {fileID: 4194803864149730838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8918791985539067242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5336918757723107636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05e11a0b9a5e7448b64e56dc2eed53f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerupBehaviour
+  freezeTime: 5
+  growTime: 5
+  growthScale: 2
+--- !u!65 &-7128757422445924971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5336918757723107636}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6851993805323000599
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +82,6 @@ GameObject:
   - component: {fileID: 6270536289989836444}
   - component: {fileID: 8777108897090413360}
   - component: {fileID: 1250817811756936773}
-  - component: {fileID: 4157825325042778943}
   - component: {fileID: 7978621066421008578}
   m_Layer: 0
   m_Name: GrowTube
@@ -146,21 +183,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4157825325042778943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6851993805323000599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05e11a0b9a5e7448b64e56dc2eed53f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerupBehaviour
-  freezeTime: 5
-  growTime: 5
-  growthScale: 2
 --- !u!95 &7978621066421008578
 Animator:
   serializedVersion: 7

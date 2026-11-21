@@ -4,7 +4,11 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour
 {
     private GameObject[] spawnerList;
+
+    public GameObject[] powerupList;
     public GameObject enemyPrefab;
+
+    private int chanceOfPowerup = 8;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,17 +19,26 @@ public class EnemySpawner : MonoBehaviour
 
     void StartInvoke()
     {
-        InvokeRepeating(nameof(SpawnEnemies), 2.0f, 5.0f);
+        InvokeRepeating(nameof(SpawnObjects), 2.0f, 5.0f);
     }
 
     // Update is called once per frame
-    void SpawnEnemies()
+    void SpawnObjects()
     {
         float listLength = spawnerList.Length;
         int randomIndex = (int)Random.Range(0.0f, listLength - 1.0f);
         GameObject randomSpawner = spawnerList[randomIndex];
 
-        Instantiate(enemyPrefab, randomSpawner.transform.position, randomSpawner.transform.rotation);
+        int powerupRoll = (int)Random.Range(0.0f, 10.0f);
+        if (powerupRoll <= chanceOfPowerup)
+        {
+            int randomPowerup = (int)Random.Range(0.0f, powerupList.Length);
+            Instantiate(powerupList[randomPowerup], randomSpawner.transform.position + new Vector3(0, 1.0f, 0), randomSpawner.transform.rotation);
+        }
+        else
+        {
+            Instantiate(enemyPrefab, randomSpawner.transform.position, randomSpawner.transform.rotation);
+        }
     }
 
     public void FreezeSpawners(float freezeTime) 

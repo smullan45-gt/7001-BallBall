@@ -7,6 +7,8 @@ public class PowerupBehaviour : MonoBehaviour
     public float growTime = 5.0f;
     public float growthScale = 2.0f;
 
+    private bool isGrown = false;
+
     private EnemySpawner spawner;
 
     private GameObject[] enemyList;
@@ -58,21 +60,31 @@ public class PowerupBehaviour : MonoBehaviour
 
     void ActivateGrowPowerup()
     {
-        foreach (GameObject goalPost in goalPostList)
+        gameObject.transform.Translate(new Vector3(0.0f, -10.0f, 0.0f)); //powerup cannot be destroyed until coroutine is done
+        if (isGrown == false)
         {
-            goalPost.transform.localScale *= growthScale;
-        }
+            foreach (GameObject goalPost in goalPostList)
+            {
+                goalPost.transform.localScale *= growthScale;
+            }
 
-        StartCoroutine(PauseBeforeShrink());
+            isGrown = true;
+            StartCoroutine(PauseBeforeShrink(growTime));
+        }
+        
     }
 
-    IEnumerator PauseBeforeShrink() 
+    IEnumerator PauseBeforeShrink(float growTime) 
     {
         yield return new WaitForSeconds(growTime);
-
+        Debug.Log("Should start foreach...");
         foreach (GameObject goalPost in goalPostList)
         {
+            Debug.Log("Shrinking Goals");
             goalPost.transform.localScale /= growthScale;
         }
+
+        isGrown = false;
+        Destroy(gameObject);
     }
 }
