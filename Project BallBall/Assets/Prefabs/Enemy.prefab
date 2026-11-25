@@ -128,7 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   agent: {fileID: 5567965828943157260}
-  stunTime: 3
+  <pointValue>k__BackingField: 1
+  moveSpeed: 3
+  <launchForce>k__BackingField: 50
 --- !u!195 &5567965828943157260
 NavMeshAgent:
   m_ObjectHideFlags: 0

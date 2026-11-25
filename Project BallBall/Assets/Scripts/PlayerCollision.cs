@@ -41,7 +41,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Player Hit!");
             Vector3 launchDirection = other.gameObject.transform.forward;
-            AddImpact(launchDirection, launchForce);
+            AddImpact(launchDirection, other.gameObject.GetComponent<EnemyBehaviour>().launchForce);
         }
     }
 }

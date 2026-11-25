@@ -10,9 +10,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     private bool isHit = false;
 
-    private BoxCollider collider;
-
     private Rigidbody rb;
+
+    [field: SerializeField] public int pointValue {get; set;}
+    [SerializeField] private float moveSpeed;
+    [field: SerializeField] public float launchForce {get; set;}
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +29,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         CheckEnemyHit();
+
+        agent.speed = moveSpeed;
     }
 
     void TogglePhysics(bool isPhysics)

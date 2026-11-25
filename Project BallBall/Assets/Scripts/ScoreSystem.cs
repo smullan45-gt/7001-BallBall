@@ -20,7 +20,7 @@ public class ScoreSystem : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             Destroy(other.gameObject);
-            currentScore++;
+            currentScore += other.gameObject.GetComponent<EnemyBehaviour>().pointValue;
             Debug.Log("SCORE!!! Current Score: " + currentScore);
         }
     }
