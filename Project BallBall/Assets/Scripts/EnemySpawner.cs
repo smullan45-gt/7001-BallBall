@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] powerupList;
     public GameObject enemyPrefab;
 
-    private int chanceOfPowerup = 8;
+    private int chanceOfPowerup = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,7 +26,6 @@ public class EnemySpawner : MonoBehaviour
         {
             Spawner spawner = gObject.GetComponent<Spawner>();
             spawnerList.Add(spawner);
-            Debug.Log("Added Spawner");
         }
     }
 
@@ -39,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnObjects()
     {
         float listLength = spawnerList.Count;
-        int randomIndex = (int)Random.Range(0.0f, listLength - 1.0f);
+        int randomIndex = (int)Random.Range(0.0f, listLength);
         Spawner randomSpawner = spawnerList[randomIndex];
 
         int powerupRoll = (int)Random.Range(0.0f, 10.0f);
