@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Spawner spawner = gObject.GetComponent<Spawner>();
             spawnerList.Add(spawner);
+            Debug.Log("Added Spawner");
         }
     }
 
@@ -42,7 +43,9 @@ public class EnemySpawner : MonoBehaviour
         Spawner randomSpawner = spawnerList[randomIndex];
 
         int powerupRoll = (int)Random.Range(0.0f, 10.0f);
-        if (powerupRoll <= chanceOfPowerup)
+
+        Debug.Log("Spawning at no. " + randomIndex);
+        if (powerupRoll <= chanceOfPowerup && randomSpawner.GetHasPowerup() == false)
         {
             int randomPowerup = (int)Random.Range(0.0f, powerupList.Length);
             randomSpawner.SpawnPowerup(powerupList[randomPowerup]);

@@ -7,23 +7,40 @@ public class PowerupBehaviour : MonoBehaviour
     public float growTime = 5.0f;
     public float growthScale = 2.0f;
 
+    [SerializeField] private float rayDistance = 5f;
+
     private bool isGrown = false;
 
-    private EnemySpawner spawner;
+    private EnemySpawner spawnManager;
+    private Spawner originSpawner;
 
     private GameObject[] enemyList;
     private GameObject[] goalPostList;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawner = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
+        spawnManager = GameObject.Find("GameManager").GetComponent<EnemySpawner>();
         goalPostList = GameObject.FindGameObjectsWithTag("Posts");
+
+        FindOriginSpawner();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FindOriginSpawner()
     {
-        
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, rayDistance))
+        {
+            Debug.Log(hit.collider.name);
+
+            if(hit.transform.gameObject.tag == "Spawner")
+            {
+                originSpawner = hit.transform.gameObject.GetComponent<Spawner>();
+            }
+            else
+            {
+                Debug.Log("Weh! No Spawner???");
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,8 +61,8 @@ public class PowerupBehaviour : MonoBehaviour
     void ActivateIcePowerup()
     {
         Debug.Log("Freeze!");
-        Destroy(gameObject);
-        spawner.FreezeSpawners(freezeTime);
+        DestroyPowerup(gameObject);
+        spawnManager.FreezeSpawners(freezeTime);
         enemyList = GameObject.FindGameObjectsWithTag("Enemy");
         GroupFreezeEnemies(enemyList);
     }
@@ -85,12 +102,12 @@ public class PowerupBehaviour : MonoBehaviour
         }
 
         isGrown = false;
-        Destroy(gameObject);
+        DestroyPowerup(gameObject);
     }
 
     void DestroyPowerup(GameObject gameObject)
     {
         Destroy(gameObject);
-        
+        originSpawner.SetHasPowerup(false);
     }
 }
