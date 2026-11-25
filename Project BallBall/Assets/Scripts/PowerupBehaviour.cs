@@ -87,4 +87,10 @@ public class PowerupBehaviour : MonoBehaviour
         isGrown = false;
         Destroy(gameObject);
     }
+
+    void DestroyPowerup(GameObject gameObject)
+    {
+        Destroy(gameObject);
+        
+    }
 }

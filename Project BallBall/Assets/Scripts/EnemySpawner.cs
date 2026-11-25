@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private GameObject[] spawnerList;
+    private List<Spawner> spawnerList = new List<Spawner>();
 
     public GameObject[] powerupList;
     public GameObject enemyPrefab;
@@ -12,9 +13,20 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnerList = GameObject.FindGameObjectsWithTag("Spawner");
+        FindSpawners();
 
         StartInvoke();
+    }
+
+    void FindSpawners()
+    {
+        GameObject[] objectList = GameObject.FindGameObjectsWithTag("Spawner");
+
+        foreach (GameObject gObject in objectList)
+        {
+            Spawner spawner = gObject.GetComponent<Spawner>();
+            spawnerList.Add(spawner);
+        }
     }
 
     void StartInvoke()
@@ -25,19 +37,19 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void SpawnObjects()
     {
-        float listLength = spawnerList.Length;
+        float listLength = spawnerList.Count;
         int randomIndex = (int)Random.Range(0.0f, listLength - 1.0f);
-        GameObject randomSpawner = spawnerList[randomIndex];
+        Spawner randomSpawner = spawnerList[randomIndex];
 
         int powerupRoll = (int)Random.Range(0.0f, 10.0f);
         if (powerupRoll <= chanceOfPowerup)
         {
             int randomPowerup = (int)Random.Range(0.0f, powerupList.Length);
-            Instantiate(powerupList[randomPowerup], randomSpawner.transform.position + new Vector3(0, 1.0f, 0), randomSpawner.transform.rotation);
+            randomSpawner.SpawnPowerup(powerupList[randomPowerup]);
         }
         else
         {
-            Instantiate(enemyPrefab, randomSpawner.transform.position, randomSpawner.transform.rotation);
+            randomSpawner.SpawnEnemy(enemyPrefab);
         }
     }
 
