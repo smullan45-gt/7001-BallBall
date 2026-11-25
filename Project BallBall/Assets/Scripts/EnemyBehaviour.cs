@@ -19,10 +19,22 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //CheckForRush();
+        
+
         rb = GetComponent<Rigidbody>();
         TogglePhysics(false);
-
         player = GameObject.FindWithTag("Player");
+    }
+
+    void CheckForRush()
+    {
+        if(RushModeManager.Instance.isRushActive == true)
+        {
+            pointValue *= RushModeManager.Instance.pointMultiplier;
+            moveSpeed *= RushModeManager.Instance.enemySpeedMultiplier;
+            launchForce *= RushModeManager.Instance.enemyLaunchMultiplier;
+        }
     }
 
     // Update is called once per frame

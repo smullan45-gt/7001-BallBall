@@ -9,13 +9,16 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] powerupList;
     public GameObject enemyPrefab;
 
+    [field: SerializeField] private float startup {get; set;}
+    [field: SerializeField] private float interval {get; set;}
+
     private int chanceOfPowerup = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         FindSpawners();
 
-        StartInvoke();
+        StartInvoke(startup, interval);
     }
 
     void FindSpawners()
@@ -29,9 +32,14 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void StartInvoke()
+    public void StartInvoke(float startup, float interval)
     {
-        InvokeRepeating(nameof(SpawnObjects), 2.0f, 5.0f);
+        InvokeRepeating(nameof(SpawnObjects), startup, interval);
+    }
+
+    public void CancelSpawnInvoke()
+    {
+        CancelInvoke();
     }
 
     // Update is called once per frame
@@ -57,13 +65,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void FreezeSpawners(float freezeTime) 
     {
-        CancelInvoke();
+        CancelSpawnInvoke();
         StartCoroutine(PauseSpawners(freezeTime));
     }
 
     IEnumerator PauseSpawners(float pauseTime)
     {
         yield return new WaitForSeconds(pauseTime);
-        StartInvoke();
+        StartInvoke(startup, interval);
     }
 }

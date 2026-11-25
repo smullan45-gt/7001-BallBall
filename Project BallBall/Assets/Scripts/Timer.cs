@@ -3,8 +3,11 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 20.0f;
-    private bool isTimerRunning = false;
+    public float rushStartTime = 10.0f;
     private float currentTime;
+
+    private bool isTimerRunning = false;
+
     private ScoreSystem scoreCounter;
 
     void Start()
@@ -26,6 +29,10 @@ public class Timer : MonoBehaviour
                 if(seconds != currentTime) Debug.Log("Time Remaining: " + seconds);
 
                 currentTime = seconds;
+            }
+            else if(timeRemaining == rushStartTime)
+            {
+                RushModeManager.Instance.ActivateRushMode();
             }
             else
             {

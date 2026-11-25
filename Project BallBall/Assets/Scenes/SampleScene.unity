@@ -1052,6 +1052,7 @@ GameObject:
   - component: {fileID: 1741095186}
   - component: {fileID: 1741095187}
   - component: {fileID: 1741095188}
+  - component: {fileID: 1741095189}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1087,6 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   timeRemaining: 35
+  rushStartTime: 20
 --- !u!114 &1741095188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1105,25 @@ MonoBehaviour:
   - {fileID: 6663449894584797776, guid: cf6199b2042a78744ae9927e3fb4a34f, type: 3}
   - {fileID: 5336918757723107636, guid: be982d784581f4f44a1c473b85d36bee, type: 3}
   enemyPrefab: {fileID: 8339209504008068739, guid: dc33684f8949e35419f9db29f97b868c, type: 3}
+  <startup>k__BackingField: 2
+  <interval>k__BackingField: 5
+--- !u!114 &1741095189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741095185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1673f3c915a034aacee9e41a7d25d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RushModeManager
+  pointMultiplier: 2
+  enemySpeedMultiplier: 2
+  enemyLaunchMultiplier: 2
+  rushSpawnRate: 2
+  isRushActive: 0
 --- !u!1001 &1768231217
 PrefabInstance:
   m_ObjectHideFlags: 0
